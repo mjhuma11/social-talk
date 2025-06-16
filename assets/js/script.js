@@ -436,7 +436,7 @@
         profilePicInput.addEventListener('change', function (e) {
             const file = e.target.files[0];
             if (file) {
-                if (file.size > 2 * 1024 * 1024) {
+                if (file.size > 5 * 1024 * 1024) {
                     alert('Profile picture must be less than 2MB');
                     return;
                 }
