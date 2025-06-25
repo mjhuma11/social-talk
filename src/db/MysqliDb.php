@@ -778,8 +778,7 @@ class MysqliDb
 
         if ($res instanceof MysqliDb) {
             return $res;
-        }
-         elseif (is_array($res) && isset($res[0])) {
+        } elseif (is_array($res) && isset($res[0])) {
             return $res[0];
         } elseif ($res) {
             return $res;

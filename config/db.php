@@ -1,8 +1,8 @@
 <?php
-return[
-    'host'=>'localhost',
-    'user'=>'root',
-    'password'=>'',
-    'database'=>'socialtalk'
-]
+return [
+    'host' => 'AA',
+    'user' => 'BB',
+    'password' => 'CCC',
+    'database' => 'sadgdfgfg'
+];
 ?>
