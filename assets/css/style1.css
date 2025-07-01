@@ -120,6 +120,25 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+.profile-pic-md {
+    width: 180px;
+    height: 180px;
+    border: 5px solid var(--white);
+    position: absolute;
+    bottom: -90px;
+    left: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+/* .profile-pic-sm {
+    width: 180px;
+    height: 180px;
+    border: 5px solid var(--white);
+    position: absolute;
+    bottom: -90px;
+    left: 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+} */
+
 .profile-pic-edit {
     width: 150px;
     height: 150px;
@@ -163,7 +182,7 @@ body {
     align-items: center;
     position: absolute;
     bottom: -50px;
-    left: 300px;
+    left: 280px;
     gap: 20px;
 }
 
@@ -172,14 +191,13 @@ body {
 .profile-header,
 .cover-photo-section {
     background: var(--gradient-bg);
-    object-fit: cover;
-    height: 300px;
     width: 100%;
+    height: 300px;
+    object-fit: cover;
     border-radius: 5px;
     position: relative;
     margin-bottom: 100px;
     box-shadow: 0 4px 20px var(--shadow-dark);
-
 
 }
 
@@ -732,7 +750,44 @@ body {
         height: 120px;
     }
 }
-.profile-header {
-  position: relative;
-  height: 250px;  /* adjust as needed */
+
+ /* Search modal styles */
+ #searchResultsModal .modal-dialog {
+    max-width: 500px;
+}
+#searchResultsModal .modal-body {
+    max-height: 60vh;
+    overflow-y: auto;
+}
+.search-result-item {
+    border-left: 0;
+    border-right: 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.search-result-item:hover {
+    background-color: #f8f9fa;
+}
+.search-result-item:first-child {
+    border-top: 0;
+}
+.search-result-item:last-child {
+    border-bottom: 0;
+}
+mark {
+    background-color: #ffeb3b;
+    padding: 0;
+}
+.search-input-group {
+    width: 250px;
+}
+@media (max-width: 992px) {
+    .search-input-group {
+        width: 200px;
+    }
+}
+@media (max-width: 768px) {
+    .search-input-group {
+        width: 150px;
+    }
 }
