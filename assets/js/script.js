@@ -36,9 +36,29 @@
         },
 
         // Share a post
-        sharePost: function () {
-            alert('Post shared successfully!');
-            // Future: Implement sharing logic (e.g., copy link or share to feed)
+        sharePost: function (postId) {
+            fetch('apis/share_post.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ post_id: postId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    // Optionally, refresh the feed or add the new post to the DOM
+                    location.reload(); // Simple reload to show the new post
+                } else {
+                    alert(data.message || 'Failed to share post.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Network error. Failed to share post.');
+            });
         },
 
         // Toggle comments section visibility
@@ -135,6 +155,46 @@
                 socialTalk.checkNoRequests();
                 // Future: Send decline to backend
             }
+        },
+
+        // Unfriend a user
+        unfriend: function (targetUserId) {
+            console.log('Unfriend function called for user ID:', targetUserId);
+            if (!confirm('Are you sure you want to unfriend this user?')) {
+                return;
+            }
+
+            const requestBody = `action=unfriend&target_user_id=${targetUserId}`;
+            console.log('Unfriend request body:', requestBody);
+
+            fetch('user-profile.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: requestBody
+            })
+            .then(response => {
+                console.log('Unfriend fetch response:', response);
+                return response.json();
+            })
+            .then(data => {
+                console.log('Unfriend response data:', data);
+                if (data.status === 'success') {
+                    alert(data.message);
+                    // Remove the friend card from the DOM
+                    const friendCard = document.querySelector(`.friend-card a[href*="user_id=${targetUserId}"]`).closest('.col-md-6.col-lg-4.mb-4');
+                    if (friendCard) {
+                        friendCard.remove();
+                    }
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while trying to unfriend');
+            });
         },
 
         // Check if there are no friend requests
@@ -769,3 +829,4 @@ document.querySelectorAll('.dropdown-item[data-value]').forEach(item => {
 });
 // Handle privacy dropdown selection
 // edit profile js start
+// reportError function

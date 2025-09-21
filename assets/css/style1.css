@@ -791,3 +791,66 @@ mark {
         width: 150px;
     }
 }
+
+/* chat css */
+.chat-container {
+    height: 400px; /* Adjust as needed */
+    overflow-y: auto;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.message {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    max-width: 70%; /* Limit message width for better readability */
+}
+
+.message.sent {
+    align-items: flex-end; /* Align sent messages to the right */
+    margin-left: auto;
+}
+
+.message.received {
+    align-items: flex-start; /* Align received messages to the left */
+    margin-right: auto;
+}
+
+.message-content {
+    padding: 10px 15px;
+    border-radius: 12px;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.message.sent .message-content {
+    background-color: #007bff; /* Blue for sent messages */
+    color: white;
+    border-bottom-right-radius: 4px; /* Rounded corner adjustment */
+}
+
+.message.received .message-content {
+    background-color: #e9ecef; /* Light gray for received messages */
+    color: black;
+    border-bottom-left-radius: 4px; /* Rounded corner adjustment */
+}
+
+.message-time {
+    font-size: 0.8em;
+    color: #6c757d;
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.message {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.message.sent {
+    flex-direction: row-reverse; /* Reverse for sent messages to place profile pic on right if added */
+}

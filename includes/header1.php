@@ -180,7 +180,7 @@ $unread_notifications = $db->rawQueryValue("
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" aria-label="Main navigation">
         <div class="container">
             <a class="navbar-brand pulse" href="index.php">
-                <img src="assets/logo/logo.png" alt="Social-Talk Logo" style="height: 50px; width: 120px;">
+                <img src="assets/logo/logo.png" alt="Social-Talk Logo" style="height: 40px; width: 120px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -276,7 +276,7 @@ $unread_notifications = $db->rawQueryValue("
         echo '<script>Swal.fire({
             position: "top-end",
             icon: "success",
-            title: "' . $_SESSION['message'] . '",
+            title: "' . htmlspecialchars($_SESSION['message']) . '",
             showConfirmButton: false,
             timer: 1500
         });</script>';
